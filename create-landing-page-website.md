@@ -59,20 +59,28 @@ Treść:
 To szkolenie pokazuje, jak przeprowadzić projekty AI od pomysłu do
 produkcji – w sposób zrozumiały zarówno dla ról technicznych, jak i
 menedżerskich/biznesowych. Skupimy się na pięciu etapach cyklu
-życia projektu AI:
-1. Selekcja
-2. Development
-3. Ewaluacja
-4. Wdrożenie
-5. Utrzymanie
+życia projektu AI
+"""
+
+Dodaj ikony do każdego etapu i ładnie je rozłóż w poziomie:
+1. Selekcja ![Magnifying Glass Bold.svg](icons/Magnifying%20Glass%20Bold.svg)
+2. Development ![Code Fill.svg](icons/Code%20Fill.svg)
+3. Ewaluacja ![Graph Up Arrow.svg](icons/Graph%20Up%20Arrow.svg)
+4. Wdrożenie ![Rocket 5.svg](icons/Rocket%205.svg)
+5. Utrzymanie ![Umbrella.svg](icons/Umbrella.svg)
+
 Każdy etap jest omówiony z perspektywy ról technicznych i biznesowych, z praktycznymi wskazówkami, narzędziami i przykładami.
 
-Co wyniesiesz ze szkolenia?
-• Ankieta: jakie są najczęstsze powody, dla których projekty AI / ML nie odnoszą sukcesu?
-• Checklista ISMDTE - 6 punktów przed rozpoczęciem projektu AI
-• Niezbędne kroki do trzymania projektu AI na właściwym torze i wprowadzenia na produkcję
+### Co wyniesiesz ze szkolenia?
+- Ankieta: jakie są najczęstsze powody, dla których projekty AI / ML nie odnoszą sukcesu?
+- Checklista ISMDTE - 6 punktów przed rozpoczęciem projektu AI
+- Niezbędne kroki do trzymania projektu AI na właściwym torze i wprowadzenia na produkcję
 
 ### Testimonials
+
+Umieśćw w formie karuzeli opinie od osób, które uczestniczyły w szkoleniu Dawida:
+
+Nagłówek: Co inni mówią o nas?
 
 Head of Artificial Intelligence
 Tomasz S
@@ -87,7 +95,7 @@ Aleksandra W
 "Podczas kilku miesięcy naszej współpracy w zespole projektowym, Dawid zawsze był otwarty na dyskusję i wymianę wiedzy. Jego niesamowitą prezentację będę pamiętała przez długi czas – Dawid wykorzystał swoje nieszablonowe myślenie oraz uczenie maszynowe (w Pythonie), aby znaleźć odpowiedź na bieżące pytanie związane z projektem. Wydaje się, że naprawdę czerpie radość z pracy z danymi."
 
 ### Dla kogo?
-Kolory: Tło - gradient (czarny do ciemnoszarego), tekst biały
+Kolory: Tło - gradient, tekst biały
 (Na środku:) "Z moich warsztatów korzystają najlepsi:"
 (W dwóch kolumnach:)
 """
@@ -102,6 +110,8 @@ Kolory: Tło - gradient (czarny do ciemnoszarego), tekst biały
 """
 
 ### Dodatkowo otrzymasz
+
+Szare tło. Wewnątrz ramek, obok siebie z ikonami:
 
 - Zestaw przydatnych materiałów i narzędzi, które wykorzystasz w praktyce
 - Certyfikat - projekt AI na dobrym torze

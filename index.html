@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ai-sukces.pl - Buduj świetne produkty AI</title>
+    <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-orange: #EF7F11;
+            --color-blue: #4040B2;
+            --color-dark: #333;
+            --color-light: #f9f9f9;
+            --color-red: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--color-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .btn-orange {
+            background-color: var(--color-orange);
+            color: white !important;
+            border: none;
+        }
+
+        .btn-orange:hover {
+            background-color: #d66e0b;
+        }
+
+        /* Menu */
+        header {
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-orange);
+        }
+
+        @media(max-width: 900px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-direction: column-reverse;
+        }
+
+        @media(min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+            }
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        @media(min-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        /* Hook */
+        .hook {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--color-light);
+        }
+
+        .hook-stat {
+            font-size: 5rem;
+            color: var(--color-red);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .hook-stat {
+                font-size: 7rem;
+            }
+        }
+
+        .hook-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+
+        .hook-sources {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 30px;
+        }
+
+        .hook-sources a {
+            text-decoration: underline;
+        }
+
+        /* O szkoleniu */
+        .training {
+            padding: 80px 0;
+        }
+
+        .training h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--color-blue);
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            gap: 40px;
+        }
+
+        @media(min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .stages-list ol {
+            list-style: decimal inside;
+            margin-left: 10px;
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .stages-list li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .what-you-learn {
+            background: #f0f0ff;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--color-blue);
+        }
+
+        .what-you-learn h3 {
+            margin-bottom: 20px;
+            color: var(--color-blue);
+        }
+
+        .what-you-learn ul {
+            list-style: disc inside;
+        }
+
+        .what-you-learn li {
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--color-orange);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--color-blue);
+        }
+
+        .quote {
+            font-style: italic;
+            color: #444;
+            flex-grow: 1;
+        }
+
+        /* Dla kogo */
+        .for-whom {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #111111, var(--color-blue));
+            color: white;
+        }
+
+        .for-whom h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .for-whom-list {
+            display: grid;
+            gap: 20px;
+        }
+        @media(min-width: 768px) {
+            .for-whom-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .for-whom-list ul {
+            list-style: none;
+        }
+
+        .for-whom-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .for-whom-list li::before {
+            content: "✓";
+            color: var(--color-orange);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Bonus */
+        .bonus {
+            padding: 60px 0;
+            background-color: var(--color-light);
+            text-align: center;
+        }
+
+        .bonus h2 {
+             color: var(--color-blue);
+             margin-bottom: 30px;
+        }
+
+        .bonus ul {
+            display: inline-block;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .bonus li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+
+         .bonus li::before {
+            content: "+";
+            color: var(--color-orange);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.4rem;
+            line-height: 1.1;
+        }
+
+        /* About Me */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media(min-width: 900px) {
+            .about-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .about-img {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 50%;
+            max-width: 300px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-text h2 {
+            color: var(--color-blue);
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--color-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-info div {
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+        }
+
+        .contact a {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #ccc;
+            padding: 50px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-left .logo-small {
+            height: 35px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
+        .footer-nav {
+             display: flex;
+             flex-direction: column;
+             gap: 10px;
+        }
+
+        .footer-nav a {
+            display: block;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--color-orange);
+        }
+
+        .linkedin-icon {
+            display: inline-block;
+            margin-top: 15px;
+            width: 32px;
+            height: 32px;
+            background-color: #0077b5;
+            color: white;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">
+                     <img src="logo/logo.png" alt="ai-sukces.pl">
+                </a>
+                <div class="nav-links">
+                    <a href="#hero">Start</a>
+                    <a href="#o-szkoleniu">O szkoleniu</a>
+                    <a href="#program-szkolenia">Program szkolenia</a>
+                    <a href="#dla-kogo">Dla kogo?</a>
+                    <a href="#kontakt" class="btn btn-orange">Kontakt</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Buduj świetne produkty AI, generuj wartość biznesową i zdobywaj serca klientów.</h1>
+                <p>Od lat wspieram organizacje, zespoły oraz ekspertów AI w skutecznej pracy nad rozwojem produktów i usług cyfrowych.</p>
+                <p style="margin: 20px 0; font-weight: bold; font-size: 1.1rem;">Zobacz jak mogę Ci pomóc!</p>
+                <a href="#kontakt" class="btn btn-orange">Skontaktuj się ze mną</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/dm_turtleneck.png" alt="Dawid Marczak">
+            </div>
+        </div>
+    </section>
+
+    <section class="hook">
+        <div class="container">
+            <div class="hook-stat">80%</div>
+            <div class="hook-text">
+                <p>Szacuje się, że tyle projektów AI i ML kończy się niepowodzeniem(1,2).</p>
+                <br>
+                <p>AI jest dziś kluczowym tematem w prawie każdej firmie – od zarządów po zespoły techniczne. Organizacje inwestują w modele, dane i infrastrukturę, licząc na zwrot w inwestycji jaki obiecuje AI. Rzeczywistość okazuje się być brutalna: większość modeli AI nie trafia na produkcję lub nie dostarcza oczekiwanej wartości. Istnieją jednak procesy, dzięki którym można trzymać projekt AI na dobrym torze, a w rezultacie zwiększyć jego szansę na sukces.</p>
+            </div>
+            <div class="hook-sources">
+                <p>Źródła:</p>
+                <a href="https://www.rand.org/pubs/research_reports/RRA2680-1.html" target="_blank">(1) RAND Corporation</a> |
+                <a href="https://www.rexeranalytics.com/data-science-survey#" target="_blank">(2) Rexer Analytics</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="o-szkoleniu" class="training">
+        <div class="container">
+            <h2>Projekt AI na dobrym torze – od pomysłu do wdrożenia</h2>
+            <div class="grid-2">
+                <div>
+                    <p style="margin-bottom: 20px;">
+                        To szkolenie pokazuje, jak przeprowadzić projekty AI od pomysłu do produkcji – w sposób zrozumiały zarówno dla ról technicznych, jak i menedżerskich/biznesowych. Skupimy się na pięciu etapach cyklu życia projektu AI:
+                    </p>
+                    <div id="program-szkolenia" class="stages-list">
+                        <ol>
+                            <li>Selekcja</li>
+                            <li>Development</li>
+                            <li>Ewaluacja</li>
+                            <li>Wdrożenie</li>
+                            <li>Utrzymanie</li>
+                        </ol>
+                    </div>
+                    <p style="margin-top: 20px;">
+                        Każdy etap jest omówiony z perspektywy ról technicznych i biznesowych, z praktycznymi wskazówkami, narzędziami i przykładami.
+                    </p>
+                </div>
+                <div class="what-you-learn">
+                    <h3>Co wyniesiesz ze szkolenia?</h3>
+                    <ul>
+                        <li>Ankieta: jakie są najczęstsze powody, dla których projekty AI / ML nie odnoszą sukcesu?</li>
+                        <li>Checklista ISMDTE - 6 punktów przed rozpoczęciem projektu AI</li>
+                        <li>Niezbędne kroki do trzymania projektu AI na właściwym torze i wprowadzenia na produkcję</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="role">Head of Artificial Intelligence</div>
+                    <div class="name">Tomasz S</div>
+                    <div class="quote">"Dawid posiada nie tylko doskonałe umiejętności techniczne, ale również wyjątkowe zdolności współpracy zespołowej. Jego wkład w spójność i zgranie zespołu jest nieoceniony. Szkolenie, które prowadził, dostarczyło ogromnej dawki wiedzy na temat AI i pomogło w propagacji tego tematu w organizacji. Dzięki temu szkoleniu można było zrozumieć zarówno podstawy AI, jak i kolejne kroki niezbędne do osiągnięcia sukcesu w projekcie."</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="role">Data Lead | AI/ML Engineering</div>
+                    <div class="name">Rémi S</div>
+                    <div class="quote">"Dawid ma wyjątkowe zrozumienie Data Science i jest zmotywowany, aby używać tej wiedzy w praktyce. Podczas naszej współpracy miałem przyjemność prowadzić z nim warsztat oraz hackathon, które wspaniale pokazały jego umiejętności przekazywania wiedzy innym. Dawid zadbał o to, aby sesja była interaktywna, angażując uczestników i jednocześnie dostarczając zespołowi fundamentalnej wiedzy o AI, czyniąc ten warsztat bezcennym doświadczeniem."</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="role">Software Engineer</div>
+                    <div class="name">Aleksandra W</div>
+                    <div class="quote">"Podczas kilku miesięcy naszej współpracy w zespole projektowym, Dawid zawsze był otwarty na dyskusję i wymianę wiedzy. Jego niesamowitą prezentację będę pamiętała przez długi czas – Dawid wykorzystał swoje nieszablonowe myślenie oraz uczenie maszynowe (w Pythonie), aby znaleźć odpowiedź na bieżące pytanie związane z projektem. Wydaje się, że naprawdę czerpie radość z pracy z danymi."</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dla-kogo" class="for-whom">
+        <div class="container">
+            <h2>Z moich warsztatów korzystają najlepsi:</h2>
+            <div class="for-whom-list">
+                <ul>
+                    <li>Data Scientists, AI Engineers, Machine Learning Engineers</li>
+                    <li>Liderzy Zespołów Produktowych, Designu oraz Technologii</li>
+                    <li>(AI) Product Managers, Product Owners</li>
+                    <li>Product Designers / UX Designers</li>
+                </ul>
+                <ul>
+                    <li>Tech leads / Lead Engineers / Senior Engineers</li>
+                    <li>Menadżerowie biznesowi, Liderzy zespołów czy jednostek biznesowych współpracujący z zespołami IT</li>
+                    <li>Product/UX Researchers</li>
+                    <li>Product/Data/IT/Business Analysts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="bonus">
+        <div class="container">
+            <h2>Dodatkowo otrzymasz</h2>
+            <ul>
+                <li>Zestaw przydatnych materiałów i narzędzi, które wykorzystasz w praktyce</li>
+                <li>Certyfikat - projekt AI na dobrym torze</li>
+                <li>Dodatkową konsultację 1:1 z Dawidem</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container about-content">
+            <div class="about-img">
+                <img src="images/dm_guitar.png" alt="Dawid Marczak z gitarą">
+            </div>
+            <div class="about-text">
+                <h2>O mnie</h2>
+                <p>Data Scientist z ponad 5-letnim doświadczeniem, który mierzy się z nader częstym brakiem strategii AI & data w firmach oraz braku wdrożeń modeli i produktów AI na produkcję (stuck in Proof of Concept?).</p>
+                <p>Z niezaspokojoną ciekawością szuka odpowiedzi na pytanie jak budować strategię, zespoły, infrastrukturę i produkty AI w firmach by zespoły konsekwentnie wdrażały swoje rozwiązania?</p>
+                <p>Miał przyjemność pracować nad modelami AI w branżach HR, automotive, transporcie morskim oraz bankowości. Aktualnie skupia się na doradztwie i inspiracji tworząc autorskie warsztaty ze strategii oraz produktów i wspierając pracę zespołów AI & data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="contact">
+        <div class="container">
+            <h2>Kontakt</h2>
+            <div class="contact-info">
+                <div>Telefon: +48 455-526-854</div>
+                <div>Email: <a href="mailto:dawid.marczak@ai-sukces.pl">dawid.marczak@ai-sukces.pl</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <a href="#hero">
+                    <img src="logo/logo.png" alt="ai-sukces.pl" class="logo-small">
+                </a>
+                <p>Dawid Marczak ai-sukces.pl</p>
+                <p>NIP: 8952241637</p>
+                <a href="https://www.linkedin.com/in/david-marczak/" target="_blank" class="linkedin-icon">in</a>
+            </div>
+            <div class="footer-nav">
+                <a href="#hero">Start</a>
+                <a href="#o-szkoleniu">O szkoleniu</a>
+                <a href="#program-szkolenia">Program szkolenia</a>
+                <a href="#dla-kogo">Dla kogo?</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
