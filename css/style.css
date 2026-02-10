@@ -1,0 +1,583 @@
+:root {
+    --color-orange: #EF7F11;
+    --color-blue: #4040B2;
+    --color-dark: #333;
+    --color-light: #f9f9f9;
+    --color-red: #d32f2f;
+    --color-light-red: #ffe5e5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-dark);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.btn-orange {
+    background-color: var(--color-orange);
+    color: white !important;
+    border: none;
+}
+
+.btn-orange:hover {
+    background-color: #d66e0b;
+}
+
+/* Menu */
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-dark);
+}
+
+.nav-links a:hover {
+    color: var(--color-orange);
+}
+
+@media(max-width: 900px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Hero */
+.hero {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-direction: column-reverse; /* Text bottom, image top on mobile if desired, but here usually Text top. Previous code had column-reverse which puts text bottom if text is first in HTML? No.
+    Flex direction column reverse: The main-start and main-end lines are swapped.  If items are 1(text), 2(img). Visual order is 2(img), 1(text).
+    */
+}
+
+@media(min-width: 768px) {
+    .hero-content {
+        flex-direction: row;
+    }
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--color-dark);
+}
+
+@media(min-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Hook */
+.hook {
+    padding: 60px 0;
+    background-color: var(--color-light);
+}
+
+.hook-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+@media(min-width: 768px) {
+    .hook-content {
+        flex-direction: row;
+        align-items: start;
+    }
+}
+
+.hook-left {
+    flex: 1;
+    background-color: var(--color-light-red);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.hook-stat {
+    font-size: 5rem;
+    color: var(--color-red);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+@media(min-width: 768px) {
+    .hook-stat {
+        font-size: 7rem;
+    }
+}
+
+.hook-remark {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.hook-right {
+    flex: 1.5;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.hook-sources {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.hook-sources a {
+    text-decoration: underline;
+}
+
+/* O szkoleniu */
+.training {
+    padding: 80px 0;
+}
+
+.training h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--color-blue);
+    text-align: center;
+}
+
+.grid-2 {
+    display: grid;
+    gap: 40px;
+}
+
+@media(min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.stages-list ol {
+    list-style: none; /* Removed default numbering to use icons/custom logic if needed, but keeping simple for now with icons inline */
+    margin-left: 0;
+    font-weight: 600;
+    color: var(--color-dark);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* Center the stages */
+}
+
+.stages-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+}
+
+.stage-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    /* Placeholder for icon styling */
+}
+
+.what-you-learn {
+    background: #f0f0ff;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-blue);
+}
+
+.what-you-learn h3 {
+    margin-bottom: 20px;
+    color: var(--color-blue);
+}
+
+.what-you-learn ul {
+    list-style: disc inside;
+}
+
+.what-you-learn li {
+    margin-bottom: 10px;
+}
+
+/* Testimonials Carousel */
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--color-light);
+    text-align: center;
+}
+
+.testimonials h2 {
+    margin-bottom: 40px;
+    color: var(--color-dark);
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    height: 100%;
+}
+
+.carousel-track {
+    padding: 10px;
+    list-style: none;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    display: none; /* JavaScript will handle visibility */
+    animation: fadeVisibility 0.5s;
+}
+
+.carousel-slide.active-slide {
+    display: block;
+}
+
+@keyframes fadeVisibility {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.testimonial-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    border-top: 5px solid var(--color-orange);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--color-blue);
+    z-index: 10;
+}
+
+.nav-button.prev {
+    left: 0;
+}
+
+.nav-button.next {
+    right: 0;
+}
+
+/* Dla kogo */
+.for-whom {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #111111, #444444);
+    color: white;
+}
+
+.for-whom h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.for-whom-list {
+    display: grid;
+    gap: 20px;
+}
+@media(min-width: 768px) {
+    .for-whom-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.for-whom-list ul {
+    list-style: none;
+}
+
+.for-whom-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    font-size: 1.05rem;
+}
+
+.for-whom-list li::before {
+    content: "✓";
+    color: var(--color-orange);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Bonus */
+.bonus {
+    padding: 60px 0;
+    background-color: var(--color-light);
+    text-align: center;
+}
+
+.bonus h2 {
+     color: var(--color-blue);
+     margin-bottom: 30px;
+}
+
+.bonus-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.bonus-item {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.bonus-icon {
+    width: 40px;
+    height: 40px;
+}
+
+/* About Me */
+.about {
+    padding: 80px 0;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+@media(min-width: 900px) {
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.about-img {
+    flex: 0 0 300px;
+    text-align: center;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 50%;
+    max-width: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+    color: var(--color-blue);
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+/* Contact */
+.contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #000 0%, var(--color-blue) 100%);
+    color: white;
+    text-align: center;
+}
+
+.contact h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-item {
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.1);
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+}
+
+.contact-item a {
+    color: white;
+    font-weight: 600;
+}
+
+.contact-item:hover, .contact-item:hover a {
+    color: var(--color-orange);
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1); /* Determine if icons need inversion depending on their color */
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: #ccc;
+    padding: 50px 0;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-left .logo-small {
+    height: 35px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.footer-nav {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+}
+
+.footer-nav a {
+    display: block;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: var(--color-orange);
+}
+
+.linkedin-icon {
+    display: inline-block;
+    margin-top: 15px;
+    width: 32px;
+    height: 32px;
+    background-color: #0077b5;
+    color: white;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
