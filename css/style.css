@@ -1,6 +1,7 @@
 :root {
     --color-orange: #EF7F11;
     --color-blue: #4040B2;
+    --color-dark-blue: #01003D;
     --color-dark: #333;
     --color-light: #f9f9f9;
     --color-red: #d32f2f;
@@ -369,7 +370,7 @@ nav {
 /* Dla kogo */
 .for-whom {
     padding: 80px 0;
-    background: linear-gradient(135deg, #111111, #444444);
+    background: linear-gradient(190deg, #000 0%, var(--color-blue) 100%);
     color: white;
 }
 
