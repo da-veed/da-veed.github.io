@@ -1,10 +1,17 @@
 :root {
     --color-orange: #EF7F11;
+    --color-orange-dark: #f0a711;
     --color-blue: #4040B2;
-    --color-dark: #333;
-    --color-light: #f9f9f9;
+    --color-blue-light: #5d5dff;
+    --color-dark-blue: #01003D;
+    --color-dark: #222;
+    --color-light: #f4f6f8;
     --color-red: #d32f2f;
     --color-light-red: #ffe5e5;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
+    --radius-md: 12px;
+    --radius-lg: 20px;
 }
 
 * {
@@ -16,12 +23,15 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--color-dark);
-    line-height: 1.6;
+    line-height: 1.7;
+    background-color: #fff;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, .font-heading {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 }
 
 a {
@@ -35,39 +45,45 @@ ul {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1140px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
 .btn {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 14px 32px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(239, 127, 17, 0.3);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
 }
 
 .btn-orange {
-    background-color: var(--color-orange);
+    background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-dark) 100%);
     color: white !important;
     border: none;
 }
 
 .btn-orange:hover {
-    background-color: #d66e0b;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(239, 127, 17, 0.4);
 }
 
 /* Menu */
 header {
-    background: white;
+    background: rgba(255, 255, 255, 0.98);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 10px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -89,8 +105,28 @@ nav {
 
 .nav-links a {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     color: var(--color-dark);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-orange);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.btn-orange::after {
+    display: none;
 }
 
 .nav-links a:hover {
@@ -110,14 +146,16 @@ nav {
 
 /* Hero */
 .hero {
-    padding: 80px 0;
+    padding: 100px 0 80px;
     background-color: #fff;
+    background: radial-gradient(circle at top right, rgba(64, 64, 178, 0.05), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(239, 127, 17, 0.05), transparent 40%);
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 40px;
     flex-direction: column-reverse; /* Text bottom, image top on mobile if desired, but here usually Text top. Previous code had column-reverse which puts text bottom if text is first in HTML? No.
     Flex direction column reverse: The main-start and main-end lines are swapped.  If items are 1(text), 2(img). Visual order is 2(img), 1(text).
     */
@@ -135,31 +173,50 @@ nav {
 
 .hero-text h1 {
     font-size: 2.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--color-dark);
+    line-height: 1.25;
 }
 
 @media(min-width: 768px) {
     .hero-text h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
 }
 
 .hero-image {
     flex: 1;
     text-align: center;
+    position: relative;
+}
+
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    bottom: -20px;
+    background: var(--color-blue);
+    z-index: 0;
+    border-radius: 20px;
+    opacity: 0.1;
+    transform: rotate(-2deg);
 }
 
 .hero-image img {
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     max-height: 400px;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-soft);
 }
 
 /* Hook */
 .hook {
-    padding: 60px 0;
+    padding: 80px 0;
     background-color: var(--color-light);
 }
 
@@ -179,16 +236,20 @@ nav {
 
 .hook-left {
     flex: 1;
-    background-color: var(--color-light-red);
-    padding: 30px;
-    border-radius: 20px;
+    background: #fff;
+    padding: 40px;
+    border-radius: var(--radius-lg);
     text-align: center;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(211, 47, 47, 0.1);
 }
 
 .hook-stat {
-    font-size: 5rem;
-    color: var(--color-red);
-    font-weight: 800;
+    font-size: 6rem;
+    background: -webkit-linear-gradient(45deg, var(--color-red), #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
     line-height: 1;
     margin-bottom: 10px;
 }
@@ -224,13 +285,13 @@ nav {
 
 /* O szkoleniu */
 .training {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .training h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: var(--color-blue);
+    font-size: 2.4rem;
+    margin-bottom: 60px;
+    color: var(--color-dark-blue);
     text-align: center;
 }
 
@@ -246,14 +307,30 @@ nav {
 }
 
 .stages-list ol {
-    list-style: none; /* Removed default numbering to use icons/custom logic if needed, but keeping simple for now with icons inline */
-    margin-left: 0;
+    list-style: none;
+    margin: 40px 0;
+    padding: 0;
     font-weight: 600;
     color: var(--color-dark);
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center; /* Center the stages */
+    gap: 30px;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Add a connector line behind items on desktop */
+@media(min-width: 900px) {
+    .stages-list ol::before {
+        content: '';
+        position: absolute;
+        top: 35px;
+        left: 50px;
+        right: 50px;
+        height: 2px;
+        background: #e0e0e0;
+        z-index: 0;
+    }
 }
 
 .stages-list li {
@@ -262,45 +339,86 @@ nav {
     align-items: center;
     text-align: center;
     width: 100px;
+    position: relative;
+    z-index: 1;
 }
 
 .stage-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 10px;
-    /* Placeholder for icon styling */
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+    background: white;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    transition: transform 0.3s;
+}
+
+.stages-list li:hover .stage-icon {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--color-orange);
 }
 
 .what-you-learn {
-    background: #f0f0ff;
-    padding: 30px;
-    border-radius: 8px;
-    border-left: 5px solid var(--color-blue);
+    background: #fff;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border-left: 6px solid var(--color-blue);
+    transition: transform 0.3s;
+}
+
+.what-you-learn:hover {
+    transform: translateY(-5px);
 }
 
 .what-you-learn h3 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--color-blue);
+    font-size: 1.5rem;
 }
 
 .what-you-learn ul {
-    list-style: disc inside;
+    list-style: none;
 }
 
 .what-you-learn li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.what-you-learn li::before {
+    content: "•";
+    color: var(--color-orange);
+    font-weight: bold;
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: -5px;
 }
 
 /* Testimonials Carousel */
 .testimonials {
-    padding: 80px 0;
+    padding: 100px 0;
     background-color: var(--color-light);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.testimonials h2 {
-    margin-bottom: 40px;
-    color: var(--color-dark);
+/* Decorative background elements */
+.testimonials::before {
+    content: '"';
+    position: absolute;
+    top: 20px;
+    left: 5%;
+    font-size: 300px;
+    line-height: 1;
+    color: rgba(64, 64, 178, 0.03);
+    font-family: serif;
+    pointer-events: none;
 }
 
 .carousel {
@@ -317,7 +435,7 @@ nav {
 .carousel-track {
     padding: 10px;
     list-style: none;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 1.0s ease-in-out;
 }
 
 .carousel-slide {
@@ -336,52 +454,92 @@ nav {
 
 .testimonial-card {
     background: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-    border-top: 5px solid var(--color-orange);
+    padding: 50px 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border-top: none;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
+    margin: 20px;
+    transition: transform 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.role {
+    color: var(--color-orange);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.name {
+    font-weight: 700;
+    color: var(--color-dark-blue);
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.quote {
+    font-style: italic;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .nav-button {
-    background: none;
+    background: white;
     border: none;
     cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color-blue);
     z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.nav-button.prev {
-    left: 0;
-}
-
-.nav-button.next {
-    right: 0;
+.nav-button:hover {
+    background: var(--color-blue);
+    color: white;
 }
 
 /* Dla kogo */
 .for-whom {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #111111, #444444);
+    padding: 100px 0;
+    background: linear-gradient(170deg, #1a1a2e 0%, var(--color-blue) 100%);
     color: white;
+    position: relative;
 }
 
 .for-whom h2 {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     color: white;
+    position: relative;
+    z-index: 2;
 }
 
 .for-whom-list {
     display: grid;
-    gap: 20px;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
 }
 @media(min-width: 768px) {
     .for-whom-list {
@@ -390,34 +548,48 @@ nav {
 }
 
 .for-whom-list ul {
-    list-style: none;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .for-whom-list li {
-    margin-bottom: 15px;
-    padding-left: 30px;
+    margin-bottom: 18px;
+    padding-left: 35px;
     position: relative;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
 }
 
 .for-whom-list li::before {
     content: "✓";
-    color: var(--color-orange);
+    background-color: var(--color-orange);
+    color: white;
     position: absolute;
     left: 0;
+    top: 2px;
     font-weight: bold;
+    font-size: 0.6em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Bonus */
 .bonus {
-    padding: 60px 0;
-    background-color: var(--color-light);
+    padding: 100px 0;
+    background-color: #fff;
     text-align: center;
 }
 
 .bonus h2 {
-     color: var(--color-blue);
-     margin-bottom: 30px;
+     color: var(--color-dark-blue);
+     margin-bottom: 50px;
 }
 
 .bonus-items {
@@ -429,24 +601,33 @@ nav {
 
 .bonus-item {
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 40px 30px;
+    border-radius: var(--radius-lg);
+    width: 320px;
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-orange);
+}
+
+.bonus-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-orange);
 }
 
 .bonus-icon {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
+    /* You might want to add a filter here or use SVG fill in HTML to colorize icons if they are black */
 }
 
 /* About Me */
 .about {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .about-content {
@@ -464,32 +645,66 @@ nav {
 }
 
 .about-img {
-    flex: 0 0 300px;
+    flex: 0 0 350px;
     text-align: center;
+    position: relative;
+}
+
+.about-img::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--color-orange);
+    border-radius: 50%;
+    top: 15px;
+    left: 15px;
+    z-index: -1;
 }
 
 .about-img img {
     width: 100%;
     border-radius: 50%;
     max-width: 300px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-soft);
+    background-color: #fff; /* fallback */
+    border: 5px solid #fff;
 }
 
 .about-text h2 {
-    color: var(--color-blue);
-    margin-bottom: 25px;
+    color: var(--color-dark-blue);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
 }
 
 .about-text p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #555;
 }
 
 /* Contact */
 .contact {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #000 0%, var(--color-blue) 100%);
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0a2e 0%, #162447 100%);
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle decoration for contact */
+.contact::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: var(--color-orange);
+    opacity: 0.1;
+    border-radius: 50%;
+    filter: blur(40px);
 }
 
 .contact h2 {
@@ -506,13 +721,15 @@ nav {
 
 .contact-item {
     font-size: 1.2rem;
-    background: rgba(255,255,255,0.1);
-    padding: 15px 30px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px 40px;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: color 0.3s;
+    gap: 15px;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
 }
 
 .contact-item a {
@@ -520,22 +737,25 @@ nav {
     font-weight: 600;
 }
 
-.contact-item:hover, .contact-item:hover a {
-    color: var(--color-orange);
+.contact-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.02);
+    border-color: var(--color-orange);
 }
 
 .contact-icon {
     width: 24px;
     height: 24px;
-    filter: invert(1); /* Determine if icons need inversion depending on their color */
+    filter: invert(1);
 }
 
 /* Footer */
 footer {
-    background: #222;
-    color: #ccc;
-    padding: 50px 0;
-    font-size: 0.9rem;
+    background: #111;
+    color: #888;
+    padding: 60px 0;
+    font-size: 0.95rem;
+    border-top: 1px solid #222;
 }
 
 .footer-content {
