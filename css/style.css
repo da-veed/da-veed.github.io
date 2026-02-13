@@ -311,117 +311,203 @@ nav {
 /* O szkoleniu */
 .training {
     padding: 100px 0;
+    background-color: #fff; /* Ensure it stays white */
 }
 
 .training h2 {
     font-size: 2.4rem;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     color: var(--color-dark-blue);
     text-align: center;
 }
 
-.grid-2 {
-    display: grid;
-    gap: 40px;
+/* Timeline specific styles */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto 0;
 }
 
-@media(min-width: 768px) {
-    .grid-2 {
-        grid-template-columns: 1fr 1fr;
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #f0f0f0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 4px;
+}
+
+.timeline-container {
+    padding: 0px 40px; /* Reduced vertical padding for tighter look */
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Small margin to separate items */
+}
+
+.timeline-container.left {
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.timeline-container.right {
+    left: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    right: -30px;
+    background-color: white;
+    border: 3px solid var(--color-light);
+    top: 20px;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 5px white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.timeline-icon:hover {
+    border-color: var(--color-blue);
+    box-shadow: 0 0 10px var(--color-blue);
+    transform: scale(1.0);
+}
+
+.timeline-container.right .timeline-icon {
+    left: -30px;
+}
+
+.timeline-icon img {
+    width: 32px;
+    height: 32px;
+}
+
+.timeline-content {
+    padding: 25px;
+    background: white;
+    position: relative;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.timeline-content h3 {
+    color: var(--color-orange);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .timeline-container {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 15px;
+    }
+
+    .timeline-container.right {
+        left: 0;
+    }
+
+    .timeline-container.left {
+        justify-content: flex-start;
+    }
+
+    .timeline-icon {
+        left: 0;
+        right: auto;
+    }
+
+    .timeline-container.right .timeline-icon {
+        left: 0;
     }
 }
 
-.stages-list ol {
-    list-style: none;
-    margin: 40px 0;
-    padding: 0;
-    font-weight: 600;
-    color: var(--color-dark);
+/* Takeaways Section */
+.takeaways {
+    padding: 80px 0;
+    background-color: var(--color-light);
+}
+
+.takeaways h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-dark-blue);
+    font-size: 2.2rem;
+}
+
+.takeaways-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
-    justify-content: space-between;
-    position: relative;
 }
 
-/* Add a connector line behind items on desktop */
-@media(min-width: 900px) {
-    .stages-list ol::before {
-        content: '';
-        position: absolute;
-        top: 35px;
-        left: 50px;
-        right: 50px;
-        height: 2px;
-        background: #e0e0e0;
-        z-index: 0;
-    }
-}
-
-.stages-list li {
+.takeaway-card {
+    background: white;
+    padding: 35px 30px;
+    border-radius: var(--radius-lg);
+    width: 320px;
+    box-shadow: var(--shadow-soft);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100px;
-    position: relative;
-    z-index: 1;
+    gap: 20px;
+    transition: all 0.3s ease;
+    border-top: 5px solid transparent;
 }
 
-.stage-icon {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 15px;
-    background: white;
-    padding: 15px;
+.takeaway-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-top-color: var(--color-orange);
+}
+
+.check-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-orange-dark) 100%);
+    color: white;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border: 1px solid #eee;
-    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(239, 127, 17, 0.25);
 }
 
-.stages-list li:hover .stage-icon {
-    transform: scale(1.1) rotate(5deg);
-    border-color: var(--color-orange);
-}
-
-.what-you-learn {
-    background: #fff;
-    padding: 40px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    border-left: 6px solid var(--color-blue);
-    transition: transform 0.3s;
-}
-
-.what-you-learn:hover {
-    transform: translateY(-5px);
-}
-
-.what-you-learn h3 {
-    margin-bottom: 25px;
-    color: var(--color-blue);
-    font-size: 1.5rem;
-}
-
-.what-you-learn ul {
-    list-style: none;
-}
-
-.what-you-learn li {
-    margin-bottom: 15px;
-    padding-left: 25px;
-    position: relative;
-}
-
-.what-you-learn li::before {
-    content: "•";
-    color: var(--color-orange);
-    font-weight: bold;
-    font-size: 1.5em;
-    position: absolute;
-    left: 0;
-    top: -5px;
+.takeaway-card p {
+    font-size: 1rem;
+    color: #444;
 }
 
 /* Testimonials Carousel */
