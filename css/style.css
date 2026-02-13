@@ -769,12 +769,13 @@ nav {
 /* About Me */
 .about {
     padding: 100px 0;
+    background-color: var(--color-light); /* Changed to light gray */
 }
 
 .about-content {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 80px;
     align-items: center;
 }
 
@@ -789,27 +790,31 @@ nav {
     flex: 0 0 350px;
     text-align: center;
     position: relative;
+    z-index: 1; /* Ensure context for pseudo-element */
 }
 
+/* Updated to match hero style: Rounded Rectangle with Grey Shape */
 .about-img::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 2px solid var(--color-orange);
-    border-radius: 50%;
-    top: 15px;
-    left: 15px;
+    background-color: #d1d5db; /* Grey shape */
+    border: none;
+    border-radius: 15px; /* Rounded edges */
+    top: 10px;
+    left: 10px;
     z-index: -1;
+    transform: rotate(-1deg); /* Slight rotation to match hero vibe */
 }
 
 .about-img img {
     width: 100%;
-    border-radius: 50%;
-    max-width: 300px;
+    border-radius: 15px; /* Rounded edges instead of circle */
+    max-width: 350px;
     box-shadow: var(--shadow-soft);
-    background-color: #fff; /* fallback */
-    border: 5px solid #fff;
+    background-color: #fff;
+    border: none; /* Removed white border */
 }
 
 .about-text h2 {
