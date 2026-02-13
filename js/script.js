@@ -38,6 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        setInterval(nextSlide, 12000);
+        setInterval(nextSlide, 14000);
     }
 });

@@ -519,12 +519,6 @@ nav {
     overflow: hidden;
 }
 
-/* Decoration removed as requested
-.testimonials::before {
-    ...
-}
-*/
-
 .carousel {
     position: relative;
     max-width: 800px;
@@ -540,21 +534,22 @@ nav {
 .carousel-track {
     padding: 10px;
     list-style: none;
-    transition: transform 1.0s ease-in-out;
+    display: grid; /* Changed to grid to stack items */
+    grid-template-areas: "stack";
 }
 
 .carousel-slide {
-    display: none; /* JavaScript will handle visibility */
-    animation: fadeVisibility 0.5s;
+    grid-area: stack; /* Stack all slides on top of each other */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none; /* Prevent clicks on invisible slides */
+    display: block; /* Ensure it contributes to height calculation */
 }
 
 .carousel-slide.active-slide {
-    display: block;
-}
-
-@keyframes fadeVisibility {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
 }
 
 .testimonial-card {
