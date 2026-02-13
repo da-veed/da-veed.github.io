@@ -174,14 +174,18 @@ nav {
 .hero-text h1 {
     font-size: 2.2rem;
     margin-bottom: 25px;
-    color: var(--color-dark);
+    color: var(--color-blue);
     line-height: 1.25;
 }
 
 @media(min-width: 768px) {
     .hero-text h1 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
     }
+}
+
+.text-orange {
+    color: var(--color-orange);
 }
 
 .hero-image {
@@ -202,6 +206,27 @@ nav {
     border-radius: 20px;
     opacity: 0.1;
     transform: rotate(-2deg);
+}
+
+.name-badge {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    background: linear-gradient(245deg, var(--color-orange) 0%, var(--color-orange-dark) 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.0rem;
+    box-shadow: 0 4px 15px rgba(239, 127, 17, 0.4);
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.name-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(239, 127, 17, 0.6);
 }
 
 .hero-image img {
