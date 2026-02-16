@@ -376,7 +376,6 @@ nav {
     justify-content: center;
     box-shadow: 0 0 0 5px white;
     transition: all 0.3s ease;
-    cursor: pointer;
 }
 
 .timeline-icon:hover {
