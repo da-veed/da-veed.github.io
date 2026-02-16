@@ -26,18 +26,30 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(newIndex);
     }
 
-    if(slides.length > 0) {
+    if (slides.length > 0) {
         showSlide(0);
-        if(nextBtn) nextBtn.addEventListener('click', nextSlide);
-        if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+        let slideInterval = setInterval(nextSlide, 14000);
+        function resetInterval() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 14000);
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
 
         // Add click events for dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
+                resetInterval();
             });
         });
-
-        setInterval(nextSlide, 14000);
     }
 });
